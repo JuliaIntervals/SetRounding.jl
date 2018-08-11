@@ -10,7 +10,7 @@ import Base:
     get_zero_subnormals, set_zero_subnormals
 
 
-let fenv_consts = Vector{Cint}(9)
+let fenv_consts = Vector{Cint}(undef, 9)
     ccall(:jl_get_fenv_consts, Nothing, (Ptr{Cint},), fenv_consts)
     global const JL_FE_INEXACT = fenv_consts[1]
     global const JL_FE_UNDERFLOW = fenv_consts[2]
