@@ -17,6 +17,7 @@ using Test
     @test d == 0.4
 end
 
+
 @testset "setrounding(Float32)" begin
     a = Float32(0.1)
     b = Float32(0.3)
