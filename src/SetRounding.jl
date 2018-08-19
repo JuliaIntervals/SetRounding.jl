@@ -4,9 +4,7 @@ module SetRounding
 # This file is a part of Julia. License is MIT: https://julialang.org/license
 
 import Base.Rounding:
-    rounding, setrounding,
-    rounding_raw, setrounding_raw
-
+    setrounding
 
 const Float32_64 = Union{Float32, Float64}
 
@@ -46,10 +44,6 @@ end
 
 setrounding_raw(::Type{<:Float32_64}, i::Integer) = ccall(:fesetround, Int32, (Int32,), i)
 
-rounding_raw(::Type{<:Float32_64}) = ccall(:fegetround, Int32, ())
-
-@noinline setrounding(::Type{T}, r::RoundingMode) where {T<:Float32_64} = setrounding_raw(T,to_fenv(r))
-
-rounding(::Type{T}) where {T<:Float32_64} = from_fenv(rounding_raw(T))
+@noinline setrounding(::Type{T}, r::RoundingMode) where {T<:Float32_64} = setrounding_raw(T, to_fenv(r))
 
 end #module
