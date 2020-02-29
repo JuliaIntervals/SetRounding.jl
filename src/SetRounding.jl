@@ -3,8 +3,7 @@ module SetRounding
 
 # This file is a part of Julia. License is MIT: https://julialang.org/license
 
-import Base.Rounding:
-    setrounding
+import Base.Rounding: setrounding
 
 const Float32_64 = Union{Float32, Float64}
 
@@ -21,7 +20,6 @@ let fenv_consts = Vector{Cint}(undef, 9)
     global const JL_FE_DOWNWARD = fenv_consts[8]
     global const JL_FE_TOWARDZERO = fenv_consts[9]
 end
-
 
 to_fenv(::RoundingMode{:Nearest}) = JL_FE_TONEAREST
 to_fenv(::RoundingMode{:ToZero}) = JL_FE_TOWARDZERO
