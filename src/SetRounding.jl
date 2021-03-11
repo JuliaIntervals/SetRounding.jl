@@ -42,7 +42,7 @@ function from_fenv(r::Integer)
     end
 end
 
-setrounding_raw(::Type{<:Float32_64}, i::Integer) = ccall(:fesetround, Int32, (Int32,), i)
+setrounding_raw(::Type{<:Float32_64}, i::Integer) = ccall((:fesetround, Base.libm_name), Int32, (Int32,), i)
 
 @noinline setrounding(::Type{T}, r::RoundingMode) where {T<:Float32_64} = setrounding_raw(T, to_fenv(r))
 
