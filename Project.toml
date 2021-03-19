@@ -1,7 +1,7 @@
 name = "SetRounding"
 uuid = "3cc68bcd-71a2-5612-b932-767ffbe40ab0"
 repo = "https://github.com/JuliaIntervals/SetRounding.jl.git"
-version = "0.2.0"
+version = "0.2.1"
 
 [compat]
 julia = "1"
